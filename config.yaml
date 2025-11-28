@@ -1,0 +1,95 @@
+# Gene Classifier ML Configuration
+# This file centralizes all configuration parameters for reproducibility
+
+# Data Configuration
+data:
+  train_file: "DM_Project_24.csv"
+  test_file: "test_data.csv"
+  output_file: "predictions.txt"
+  random_seed: 42
+
+# Preprocessing Configuration
+preprocessing:
+  imputation:
+    method: "mean"  # Options: mean, median, iterative
+  scaling:
+    method: "standard"  # Options: standard, minmax, robust, none
+  outlier_handling:
+    method: "none"  # Options: zscore, iqr, none
+    zscore_threshold: 3.0
+    iqr_factor: 1.5
+
+# Model Configuration
+model:
+  ensemble:
+    voting: "soft"  # Options: soft, hard
+    models:
+      knn:
+        n_neighbors: 8
+        metric: "euclidean"
+        weights: "distance"
+      random_forest:
+        n_estimators: 100
+        max_depth: 10
+        min_samples_split: 5
+        min_samples_leaf: 2
+        random_state: 42
+
+# Cross-Validation Configuration
+cross_validation:
+  n_splits: 5
+  shuffle: true
+  random_state: 42
+  scoring:
+    primary: "f1"
+    secondary: "accuracy"
+
+# Hyperparameter Tuning Configuration
+hyperparameter_tuning:
+  enabled: false  # Set to true for full grid search
+  cv_splits: 5
+  n_jobs: -1
+  param_grids:
+    decision_tree:
+      criterion: ["gini", "entropy"]
+      max_depth: [null, 2, 5, 10, 15, 20]
+    random_forest:
+      criterion: ["gini", "entropy"]
+      max_depth: [null, 2, 5, 10, 15, 20]
+      n_estimators: [100, 200]
+    knn:
+      n_neighbors: [3, 5, 7, 9, 11, 13, 15, 17]
+      metric: ["euclidean", "manhattan"]
+
+# Experiment Tracking Configuration
+experiment:
+  tracking_enabled: false
+  tracking_uri: "mlruns"
+  experiment_name: "gene-classifier"
+  log_metrics: true
+  log_models: true
+  log_artifacts: true
+
+# Model Persistence Configuration
+model_persistence:
+  save_model: true
+  model_dir: "models"
+  model_filename: "gene_classifier_model.joblib"
+  preprocessor_filename: "preprocessor.joblib"
+  versioning: true
+
+# Logging Configuration
+logging:
+  level: "INFO"  # Options: DEBUG, INFO, WARNING, ERROR, CRITICAL
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "logs/gene_classifier.log"
+  console: true
+
+# Data Validation Configuration
+data_validation:
+  enabled: true
+  checks:
+    check_missing_values: true
+    check_data_types: true
+    check_value_ranges: true
+    max_missing_ratio: 0.5

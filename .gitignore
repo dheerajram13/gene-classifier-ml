@@ -64,6 +64,14 @@ models/
 *.log
 logs/
 
+# Experiments and monitoring
+experiments/
+monitoring/
+
+# MLflow
+mlruns/
+mlartifacts/
+
 # Testing
 .pytest_cache/
 .coverage

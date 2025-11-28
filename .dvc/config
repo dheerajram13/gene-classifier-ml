@@ -1,0 +1,6 @@
+[core]
+    remote = storage
+    autostage = true
+# [remote "storage"]
+#     url = s3://your-bucket-name/gene-classifier-data
+# Uncomment and configure for cloud storage (S3, GCS, Azure, etc.)
