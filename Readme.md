@@ -35,7 +35,7 @@ cd gene-classifier-ml
 python3 -m venv venv && source venv/bin/activate
 pip install -r requirements.txt
 
-# Add your data files (DM_project_24.csv and test_data.csv)
+# Add your data files in the Data dir (DM_project_24.csv and test_data.csv)
 
 # Run the pipeline
 python main.py
