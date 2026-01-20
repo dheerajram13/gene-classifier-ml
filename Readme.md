@@ -13,7 +13,7 @@ A machine learning pipeline for binary classification of gene functions, specifi
 - **Ensemble Learning**: Combines K-Nearest Neighbors and Random Forest classifiers using soft voting
 - **Cross-Validation**: 5-fold stratified cross-validation for robust model evaluation
 - **Hyperparameter Tuning**: Grid search optimization for model parameters
-- **Imbalanced Data Handling**: F1-score optimization for datasets with class imbalance
+- **Imbalanced Data Handling**: F1-score optimization for datasets with class imbalances
 
 ## Table of Contents
 
